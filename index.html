@@ -337,15 +337,21 @@
         }
 
         .event-name {
-            font-weight: 600;
-            color: #2c3e50;
-            font-size: 18px;
-            margin-bottom: 0.25rem;
-            line-height: 1.2;
+        font-weight: 600;
+        color: #2c3e50;
+        font-size: 12px;
+        margin-bottom: 0.25rem;
+        line-height: 1.2;
+
+        /* Uzun metinleri kesmek için eklenen stil */
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 100%; /* ya da belirli bir değer örn. 300px */
         }
 
         .event-info {
-            font-size: 14px;
+            font-size: 10px;
             color: rgba(0, 0, 0, 0.6);
             line-height: 1.4;
         }
@@ -654,9 +660,6 @@
             Customer Support - Events & Products
         </div>
         <div class="chat-messages" id="chatMessages">
-            <div class="message bot-message">
-                Hello! I can help you find events and products. Try asking me about concerts, shows, or upcoming events in your area!
-            </div>
         </div>
         <div class="chat-input">
             <input type="text" id="messageInput" placeholder="Ask about events, products, or anything else..." onkeypress="handleKeyPress(event)">
@@ -667,7 +670,6 @@
     <script>
         // Generate unique chat ID for this session
         let chatId = null;
-
 
 
         function generateChatId() {
@@ -702,7 +704,6 @@
         function createEventSelectionUI(events) {
             const eventUI = document.createElement('div');
             eventUI.className = 'event-selection-ui';
-            
             eventUI.innerHTML = `
                 <div class="event-selection-header">
                     📅 Found ${events.length} upcoming events:
@@ -722,7 +723,7 @@
                             </div>
                         </div>
                         <div class="event-actions">
-                            <button class="event-btn primary" onclick="selectEvent('${event.id}')">
+                            <button class="event-btn primary" onclick="selectEvent('${event.slug}')">
                                 Select
                             </button>
                         </div>
@@ -766,24 +767,12 @@
 
 
 
-        function selectEvent(eventId) {
-            // Hide all other forms first
-            document.querySelectorAll('.event-form').forEach(form => {
-                form.classList.remove('active');
-            });
+        function selectEvent(eventSlug) {
+            // Etkinlik ID'siyle link oluştur
+            const url = `https://www.seatpin.com/tr/${eventSlug}`;
             
-            // Show the selected event's form
-            const form = document.getElementById(`form-${eventId}`);
-            if (form) {
-                form.classList.add('active');
-            }
-        }
-
-        function cancelSelection(eventId) {
-            const form = document.getElementById(`form-${eventId}`);
-            if (form) {
-                form.classList.remove('active');
-            }
+            // Tarayıcıyı bu linke yönlendir
+            window.location.href = url;
         }
 
         async function confirmBooking(eventId) {
@@ -914,15 +903,23 @@
 
                 if (response.ok) {
                     const data = await response.json();
-		    console.log(data);
                     if (data.event) {
-		    console.log(data.event);
                     // Bu bir event ise event kartı göster
-		    const eventsList = JSON.parse(data.event);
-                    createEventSelectionUI(eventsList);
-                    }
+		                const eventsList = JSON.parse(data.event);
+                        console.log('Events List:', eventsList);
+                        const botMessageDiv = document.createElement('div');
+                    botMessageDiv.className = 'message bot-message';
+                    
+                    // Event selection UI'ını oluştur
+                    const eventSelectionUI = createEventSelectionUI(eventsList);
+                    
+                    // Bot mesajının içine event UI'ını ekle
+                    botMessageDiv.appendChild(eventSelectionUI);
+                    
+                    // Chat mesajlarına ekle
+                    chatMessages.appendChild(botMessageDiv);
+                        }
                     else {
-			console.log(data.output);
                         // Add bot response to chat
                         const botMessageDiv = document.createElement('div');
                         botMessageDiv.className = 'message bot-message';
