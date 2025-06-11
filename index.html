@@ -199,8 +199,8 @@
             position: fixed;
             bottom: 90px;
             right: 20px;
-            width: 400px;
-            height: 500px;
+            width: 450px;
+            height: 600px;
             background: white;
             border-radius: 10px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.2);
@@ -221,7 +221,7 @@
             flex: 1;
             padding: 1rem;
             overflow-y: auto;
-            max-height: 350px;
+            max-height: 450px;
         }
 
         .message {
@@ -282,6 +282,275 @@
         .send-btn:hover {
             background: #2980b9;
         }
+
+        /* Event Selection UI Styles */
+        .event-selection-ui {
+            background: #f8f9fc;
+            border: 2px solid #e3f2fd;
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            max-width: 100%;
+        }
+
+        .event-selection-header {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .event-row {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: none;
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            gap: 1rem;
+        }
+
+        .event-row:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .event-icon {
+            width: 64px;
+            height: 64px;
+            background: #3498db;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .event-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .event-name {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 0.25rem;
+            line-height: 1.2;
+        }
+
+        .event-info {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.6);
+            line-height: 1.4;
+        }
+
+        .event-actions {
+            display: flex;
+            gap: 0.5rem;
+            flex-shrink: 0;
+			flex-direction: column;
+			align-items: flex-end;
+        }
+
+        .event-btn {
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 140px;
+        }
+
+        .event-btn.primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .event-btn.primary:hover {
+            background: #e55a2b;
+            transform: translateY(-1px);
+        }
+
+        .event-arrow {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s;
+            flex-shrink: 0;
+        }
+
+        .event-arrow:hover {
+            color: #3498db;
+        }
+
+        .event-form {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 0.8rem;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .event-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 0.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: flex-end;
+        }
+
+        .confirm-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .confirm-btn:hover {
+            background: #219a52;
+        }
+
+        .cancel-btn {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .cancel-btn:hover {
+            background: #7f8c8d;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 5px;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+        }
+
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 500px) {
+            .chat-window {
+                width: 95vw;
+                right: 2.5vw;
+                height: 80vh;
+            }
+            
+            .event-row {
+                flex-wrap: wrap;
+                gap: 0.75rem;
+            }
+            
+            .event-details {
+                order: 1;
+                flex: 1 1 100%;
+            }
+            
+            .event-actions {
+                order: 2;
+                flex: 1 1 auto;
+            }
+            
+            .event-arrow {
+                order: 3;
+            }
+            
+            .event-name {
+                font-size: 16px;
+				overflow-wrap: break-word;
+				word-break: break-word;
+            }
+            
+            .event-info {
+                font-size: 13px;
+				overflow-wrap: break-word;
+				word-break: break-word;
+            }
+        }
     </style>
 </head>
 <body>
@@ -299,7 +568,7 @@
 
     <section class="hero">
         <h1>Welcome to MarketPlace</h1>
-        <p>Discover amazing products at unbeatable prices</p>
+        <p>Discover amazing products and events at unbeatable prices</p>
         <a href="#products" class="btn">Shop Now</a>
     </section>
 
@@ -323,9 +592,9 @@
                     <p>Everything for your home and outdoor space</p>
                 </div>
                 <div class="category-card">
-                    <div class="category-icon">⚽</div>
-                    <h3>Sports</h3>
-                    <p>Gear and equipment for active lifestyles</p>
+                    <div class="category-icon">🎫</div>
+                    <h3>Events</h3>
+                    <p>Concerts, shows, and entertainment experiences</p>
                 </div>
             </div>
         </div>
@@ -360,11 +629,11 @@
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-image">⌚</div>
+                    <div class="product-image">🎫</div>
                     <div class="product-info">
-                        <h3>Smart Watch</h3>
-                        <p>Track your fitness and stay connected</p>
-                        <div class="product-price">$299.99</div>
+                        <h3>Concert Tickets</h3>
+                        <p>Live music and entertainment events</p>
+                        <div class="product-price">From $49.99</div>
                     </div>
                 </div>
             </div>
@@ -382,15 +651,15 @@
     
     <div class="chat-window" id="chatWindow">
         <div class="chat-header">
-            Customer Support
+            Customer Support - Events & Products
         </div>
         <div class="chat-messages" id="chatMessages">
             <div class="message bot-message">
-                Hello! How can I help you today?
+                Hello! I can help you find events and products. Try asking me about concerts, shows, or upcoming events in your area!
             </div>
         </div>
         <div class="chat-input">
-            <input type="text" id="messageInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)">
+            <input type="text" id="messageInput" placeholder="Ask about events, products, or anything else..." onkeypress="handleKeyPress(event)">
             <button class="send-btn" onclick="sendMessage()">➤</button>
         </div>
     </div>
@@ -398,6 +667,8 @@
     <script>
         // Generate unique chat ID for this session
         let chatId = null;
+
+
 
         function generateChatId() {
             return 'chat_' + Math.random().toString(36).substr(2, 9) + '_' + Date.now();
@@ -428,6 +699,181 @@
             return text.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
         }
 
+        function createEventSelectionUI(events) {
+            const eventUI = document.createElement('div');
+            eventUI.className = 'event-selection-ui';
+            
+            eventUI.innerHTML = `
+                <div class="event-selection-header">
+                    📅 Found ${events.length} upcoming events:
+                </div>
+                ${events.map(event => `
+                    <div class="event-row" data-event-id="${event.id}">
+                        <div class="event-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-name">${event.name}</div>
+                            <div class="event-info">
+                                ${formatDate(event.date)} • ${event.remainingTickets} tickets left<br>
+                                From ${event.lowestPrice} • ${event.city}
+                            </div>
+                        </div>
+                        <div class="event-actions">
+                            <button class="event-btn primary" onclick="selectEvent('${event.id}')">
+                                Select
+                            </button>
+                        </div>
+                        <div class="event-form" id="form-${event.id}">
+                            <div class="form-group">
+                                <label>Number of tickets:</label>
+                                <select id="tickets-${event.id}">
+                                    <option value="1">1 ticket</option>
+                                    <option value="2">2 tickets</option>
+                                    <option value="3">3 tickets</option>
+                                    <option value="4">4 tickets</option>
+                                    <option value="5">5+ tickets</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Preferences (seating, time, etc.):</label>
+                                <input type="text" id="prefs-${event.id}" placeholder="e.g., VIP seating, evening show">
+                            </div>
+                            <div class="form-actions">
+                                <button class="cancel-btn" onclick="cancelSelection('${event.id}')">Cancel</button>
+                                <button class="confirm-btn" onclick="confirmBooking('${event.id}')">
+                                    Confirm Booking
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            `;
+            
+            return eventUI;
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+        }
+
+
+
+        function selectEvent(eventId) {
+            // Hide all other forms first
+            document.querySelectorAll('.event-form').forEach(form => {
+                form.classList.remove('active');
+            });
+            
+            // Show the selected event's form
+            const form = document.getElementById(`form-${eventId}`);
+            if (form) {
+                form.classList.add('active');
+            }
+        }
+
+        function cancelSelection(eventId) {
+            const form = document.getElementById(`form-${eventId}`);
+            if (form) {
+                form.classList.remove('active');
+            }
+        }
+
+        async function confirmBooking(eventId) {
+            const event = mockEvents.find(e => e.id === eventId);
+            const ticketsSelect = document.getElementById(`tickets-${eventId}`);
+            const prefsInput = document.getElementById(`prefs-${eventId}`);
+            
+            if (!event || !ticketsSelect || !prefsInput) return;
+
+            const quantity = ticketsSelect.value;
+            const preferences = prefsInput.value;
+            const chatMessages = document.getElementById('chatMessages');
+
+            // Add loading message
+            const loadingMessage = document.createElement('div');
+            loadingMessage.className = 'message bot-message';
+            loadingMessage.innerHTML = '<span class="loading-spinner"></span>Processing your booking...';
+            chatMessages.appendChild(loadingMessage);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            try {      
+                // Call webhook
+                await sendWebhook(eventId, quantity, preferences);
+
+                // Remove loading message and add success message
+                chatMessages.removeChild(loadingMessage);
+                
+                const successMessage = document.createElement('div');
+                successMessage.className = 'message bot-message';
+                successMessage.innerHTML = `
+                    <div class="success-message">
+                        ✅ <strong>Booking Confirmed!</strong><br>
+                        Event: ${event.name}<br>
+                        Tickets: ${quantity}<br>
+                        Date: ${formatDate(event.date)}<br>
+                        ${preferences ? `Preferences: ${preferences}<br>` : ''}
+                        You'll receive confirmation details shortly!
+                    </div>
+                `;
+                chatMessages.appendChild(successMessage);
+
+                // Hide the form
+                cancelSelection(eventId);
+
+            } catch (error) {
+                // Remove loading message and add error message
+                chatMessages.removeChild(loadingMessage);
+                
+                const errorMessage = document.createElement('div');
+                errorMessage.className = 'message bot-message';
+                errorMessage.innerHTML = `
+                    <div class="error-message">
+                        ❌ Booking failed: ${error.message}<br>
+                        Please try again or contact support.
+                    </div>
+                `;
+                chatMessages.appendChild(errorMessage);
+            }
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+
+        async function sendWebhook(eventId, quantity, preferences) {
+            const webhookPayload = {
+                eventId: eventId,
+                quantity: quantity,
+                preferences: preferences,
+                chatId: chatId,
+                timestamp: new Date().toISOString()
+            };
+
+            // Replace with your actual webhook URL
+            const webhookUrl = 'https://stairwayjangle.app.n8n.cloud/webhook/event-booking';
+            
+            const response = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(webhookPayload)
+            });
+
+            if (!response.ok) {
+                throw new Error('Webhook failed');
+            }
+
+            return response.json();
+        }
+
         async function sendMessage() {
             const messageInput = document.getElementById('messageInput');
             const chatMessages = document.getElementById('chatMessages');
@@ -452,8 +898,9 @@
             // Scroll to bottom
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
+
+            // Handle regular messages with webhook
             try {
-                // Send message to webhook with chat ID
                 const response = await fetch('https://stairwayjangle.app.n8n.cloud/webhook/chatbot', {
                     method: 'POST',
                     headers: {
@@ -467,12 +914,17 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    
-                    // Add bot response to chat
-                    const botMessageDiv = document.createElement('div');
-                    botMessageDiv.className = 'message bot-message';
-                    botMessageDiv.innerHTML = formatMessageWithLinks(data.reply || 'Thank you for your message!');
-                    chatMessages.appendChild(botMessageDiv);
+                    if (data.event) {
+                    // Bu bir event ise event kartı göster
+                    createEventSelectionUI(data.event);
+                    }
+                    else {
+                        // Add bot response to chat
+                        const botMessageDiv = document.createElement('div');
+                        botMessageDiv.className = 'message bot-message';
+                        botMessageDiv.innerHTML = formatMessageWithLinks(data.reply || 'Thank you for your message!');
+                        chatMessages.appendChild(botMessageDiv);
+                    }
                 } else {
                     throw new Error('Network response was not ok');
                 }
@@ -483,10 +935,12 @@
                 errorMessageDiv.textContent = 'Sorry, I\'m having trouble connecting right now. Please try again later.';
                 chatMessages.appendChild(errorMessageDiv);
             }
+            
 
             // Scroll to bottom
             chatMessages.scrollTop = chatMessages.scrollHeight;
         }
+
     </script>
 </body>
 </html>
