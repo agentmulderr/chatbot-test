@@ -914,12 +914,10 @@
 
                 if (response.ok) {
                     const data = await response.json();
-		    console.log(data.event)
                     if (data.event) {
-		    console.log(data.event)
                     // Bu bir event ise event kartı göster
 		    const eventsList = JSON.parse(data.event);
-                    createEventSelectionUI(data.eventsList);
+                    createEventSelectionUI(eventsList);
                     }
                     else {
                         // Add bot response to chat
